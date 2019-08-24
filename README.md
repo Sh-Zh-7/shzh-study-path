@@ -1,2 +1,2 @@
 # study-path
-Recoding my stuy path.
+Recoding my study path.
