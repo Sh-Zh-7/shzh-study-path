@@ -45,6 +45,7 @@
     "streambuf": "cpp",
     "typeinfo": "cpp",
     "ios": "cpp",
-    "cassert": "cpp"
+    "cassert": "cpp",
+    "stack": "cpp"
   }
 }
