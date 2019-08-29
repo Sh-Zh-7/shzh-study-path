@@ -46,6 +46,7 @@
     "typeinfo": "cpp",
     "ios": "cpp",
     "cassert": "cpp",
-    "stack": "cpp"
+    "stack": "cpp",
+    "map": "cpp"
   }
 }

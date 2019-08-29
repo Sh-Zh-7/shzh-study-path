@@ -14,7 +14,7 @@ int main() {
   auto end = partition(words.begin(), words.end(), IsSmallerThan5);
   for (auto &i = end; i != words.end(); ++i) {
     cout << *i << " ";
-  }
+  // }
   cout << endl;
   system("pause>nul");
   return 0;
