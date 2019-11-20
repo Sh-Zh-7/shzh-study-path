@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-from descision_tree import *
+from decision_tree import *
 
 # Global variable
 # fc attribute determine the color of the node
