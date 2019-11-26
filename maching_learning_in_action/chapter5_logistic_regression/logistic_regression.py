@@ -1,3 +1,6 @@
+# There is no need to pull the cost function in
+# We use the cost function to calculate our gradient
+# And we have already done it in our scratch paper
 import random
 import numpy as np
 import matplotlib.pyplot as plt
