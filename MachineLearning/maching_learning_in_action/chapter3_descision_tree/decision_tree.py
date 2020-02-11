@@ -127,4 +127,3 @@ if __name__ == "__main__":
     labels_copy = labels[:]
     tree = CreateTree(data_set, labels)
     print(Classify(tree, labels_copy, [1, 1]))
-f

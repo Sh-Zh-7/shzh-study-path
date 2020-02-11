@@ -67,10 +67,12 @@ def PlotMidText(center_pt, parent_pt, text_str):
 def PlotTree(my_tree, parent_pt, node_text):
     leaves_num = GetLeafNum(my_tree)    # Current leaves number
     # Get current layer's position
-    center_pt = ((PlotTree.x_off + (1 + leaves_num) / (2 * PlotTree.width)),
+    center_pt = ((PlotTree.x_off + (1 + float(leaves_num)) / (2 * PlotTree.width)),
                 PlotTree.y_off)
     # Connect current tree's root and its parent
     first_str = list(my_tree.keys())[0]
+    print(center_pt)
+    print(parent_pt)
     PlotMidText(center_pt, parent_pt, node_text)
     PlotNode(first_str, center_pt, parent_pt, decision_node)
     PlotTree.y_off -= 1 / PlotTree.height
@@ -102,9 +104,9 @@ def CreatePlot(my_tree):
     plt.show()
 
 if __name__ == "__main__":
-    # my_tree = RetrieveTree(1)
-    # my_tree["no surfacing"][3] = "maybe"
-    # CreatePlot(my_tree)
-    data_set, label = CreateDataSet()
-    tree = CreateTree(data_set, label)
-    CreatePlot(tree)
+    my_tree = RetrieveTree(1)
+    my_tree["no surfacing"][3] = "maybe"
+    CreatePlot(my_tree)
+    # data_set, label = CreateDataSet()
+    # tree = CreateTree(data_set, label)
+    # CreatePlot(tree)
