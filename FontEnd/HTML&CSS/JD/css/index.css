@@ -1,0 +1,290 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('../fonts/icomoon.eot?qdvp33');
+  src:  url('../fonts/icomoon.eot?qdvp33#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.ttf?qdvp33') format('truetype'),
+    url('../fonts/icomoon.woff?qdvp33') format('woff'),
+    url('../fonts/icomoon.svg?qdvp33#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+.grid {
+  height: 480px;
+}
+
+.grid-col1 {
+  position: relative;
+  height: 100%;
+  width: 190px;
+  background-color: #6e6568;
+}
+
+.grid-col1 > ul {
+  padding: 10px 0;
+  color: #fff;
+}
+
+.ad-l {
+  position: absolute;
+  width: 250px;
+  height: 480px;
+  top: 0px;
+  left: -250px;
+}
+
+.ad-r {
+  position: absolute;
+  width: 0;
+  height: 480px;
+  /* 这个是优先级，不是给定像素的 */
+  z-index: 999;
+  overflow: hidden;
+  transition: all 0.4s;
+}
+
+/* 这个是后代选择器，只对后代元素有效果 */
+.ad:hover .ad-r{
+  width: 990px;
+}
+
+.grid-col1 li {
+  /* 你这个li的height不能改变你字体的大小，只能改变你li标签的高度 */
+  padding-left: 12px;
+  line-height: 26px;
+  height: 28px;
+}
+
+.grid-col1 a {
+  color: #fff;
+}
+
+.grid-col2 {
+  height: 100%;
+  width: 790px;
+  margin-left: 10px;
+}
+
+.grid-col2 .banner {
+  position: relative;
+  text-align: center;
+}
+
+.grid-col2 img {
+  margin-top: 5px;
+  vertical-align: top;
+}
+
+/* 其实你完全可以用逗号同时给多个节点定义样式 */
+.grid-col2 .btn_left {
+  position: absolute;
+  left: 0px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 30px;
+  height: 60px;
+  background-color: rgba(0, 0, 0, 0.3);
+
+  font-size: 20px;
+  line-height: 60px;
+  color: #fff;
+}
+
+.grid-col2 .btn_right {
+  /* 绝对定位的元素不需要转换模式，直接给宽高即可 */
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 30px;
+  height: 60px;
+  background-color: rgba(0, 0, 0, 0.3);
+
+  font-size: 20px;
+  line-height: 60px;
+  color: #fff;
+}
+
+.banner .bar {
+  position: absolute;
+  bottom: 10px;
+  transform: translateX(-50%);
+  width: 175px;
+  height: 20px;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 10px;
+}
+
+.banner ul {
+  padding-top: 4px;
+  padding-left: 4px;
+}
+
+.banner li {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: white;
+  margin:0 8px;
+}
+
+.banner li:hover {
+  background-color: red;
+}
+
+.grid-col3 {
+  height: 100%;
+  width: 190px;
+  background-color: #fff;
+}
+
+.grid-col3 .login{
+  position: relative;
+  height: 115.8px;
+  border-bottom: #ccc solid 2px;
+}
+
+.login .round-img{
+  position: absolute;
+  padding-top: 5px;
+  padding-left: 5px;
+  left: 15px;
+  top: 12px;
+
+  width: 50px;
+  height: 50px;
+
+  background: url(../img/sprite_userinfo@1x.png) no-repeat -70px 0;
+}
+
+.login img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.login-up-text {
+  position: absolute;
+  top: 10px;
+  left: 75px;
+  padding-top: 10px;
+
+  height: 60px;
+  width: 85px;
+
+  color: #666;
+  font-size: 12px;
+}
+
+.login-up-text .info {
+  height: 20px;
+
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.login-up-text a {
+  color: #666;
+}
+
+.login-down a {
+  position: absolute;
+  padding-bottom: 2px;
+
+  width: 73.2px;
+  height: 23.2px;
+  box-sizing: border-box;
+
+  color: red;
+  font-size: 13px;
+  text-align: center;
+  line-height: 20px;
+
+  border: red solid 2px;
+  background-color: #fff;
+}
+
+.login-down a:hover {
+  color: white;
+  border: white solid 2px;
+  background-color: red;
+  border: red solid 2px;
+}
+
+.login-down a:nth-of-type(1) {
+  top: 75px;
+  left: 10px;
+}
+
+.login-down a:nth-of-type(2) {
+  top: 75px;
+  right: 10px;
+}
+
+.grid-col3 .borad {
+  height: 154px;
+  font-size: 12px;
+  border-bottom: #ccc solid 2px;
+}
+
+.borad-up {
+  height: 25px;
+  border-bottom: #ccc solid 2px;
+}
+
+.borad-up a{
+  padding: 8px 10px;
+}
+
+.borad-up .space {
+  margin: 7px 0px;
+  height: 15px;
+}
+
+.borad-down {
+  width: 164px;
+  height: 107px;
+  color: #999;
+}
+
+.borad-down li {
+  padding: 8px;
+  font-size: 12px;
+}
+
+.grid-col3 .expand {
+  height: 209px;
+  overflow: hidden;
+}
+
+.expand ul {
+  /* 为了防止li不够换行，可以调整ul的大小 */
+  width: 200px;
+}
+
+.expand li {
+  position: relative;
+  width: 47.8px;
+  height: 69.8px;
+  border-right: #ccc solid 2px;
+  border-bottom: #ccc solid 2px;
+}
+
+.expand i {
+  position: absolute;
+  top: 11px;
+  left: 15px;
+  font-size: 20px;
+  font-family: "icomoon";
+  font-style: normal;
+}
+
+.expand p {
+  position: absolute;
+  top: 35px;
+  margin-left: 11px;
+}

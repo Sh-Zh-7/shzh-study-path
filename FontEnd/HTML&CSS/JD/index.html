@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 三大标签的应用 -->
+  <title>JDPractice</title>
+  <meta name="description" content="京东的项目的练习!">
+  <meta name="keywords" content="京东,商品,lablablab..">
+</head>
+<!-- 引入ico，可以通过vsc的智能提示来进行补全 -->
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<!-- 引入初始化文件 -->
+<link rel="stylesheet" href="./css/normalize.css">
+<!-- 引入公共样式文件 -->
+<link rel="stylesheet" href="./css/base.css">
+<!-- 引入整文插件 -->
+<link rel="stylesheet" href="./css/index.css">
+<body>
+  <!-- vsc在行号的右边可以选择缩进代码块 -->
+  <header>
+    <div class="w">
+      <a href="#">
+        <img src="./img/header.jpg" alt="">
+      </a>
+    </div>
+  </header>
+  <nav class="shortcut">
+    <!-- 这里面嵌套的都是正文部分的内容,所以要遵守版心的宽度 -->
+    <!-- 如果并列的元素共享相同的样式,用一个块嵌套并引入相应的样式即可 -->
+    <div class="w">
+      <!-- TODO: 有点搞不懂为什么这里一个元素也要搞List -->
+      <ul class="fl address">
+        <li> <i class="location"></i> 北京</li>
+      </ul>
+      <!-- TODO: 想不到一行元素也能使用list? -->
+      <ul class="fr">
+        <li>
+					<a href="#">你好，请登录</a>
+					<a href="#" class="f10">免费注册</a>
+				</li>
+				<li class="space"></li>
+				<li>
+					<a href="#">我的订单</a>
+				</li>
+				<li class="space"></li>
+				<li>
+          <a href="#">我的京东</a>
+          <i></i>
+				</li>
+				<li class="space"></li>
+				<li>
+					<a href="#">京东会员</a>
+				</li>
+				<li class="space"></li>
+				<li>
+					<a href="#">企业采购</a>
+				</li>
+				<li class="space"></li>
+				<li>
+          <a href="#">客户服务</a>
+          <i></i>
+				</li>
+				<li class="space"></li>
+				<li>
+          <a href="#">网站导航</a>
+          <i></i>
+				</li>
+				<li class="space"></li>
+      </ul>
+    </div>
+  </nav>
+  <!-- 中间部分 -->
+  <div class="w middle">
+    <div class="logo">
+      <!-- 注意放置logo的时候我们都用h1标签包裹的，这样是为了提高权重 -->
+      <h1><a href="#"></a></h1>
+    </div>
+    <div class="search">
+      <input type="form" placeholder="请输入您的商品">
+      <button class="button"><p></p></button>
+    </div>
+    <div class="shopcar">
+      <!-- 这里如果使用块级元素p的话，会进行换行
+      但是如果像这里使用的是行级元素a的话，就不会进行换行 -->
+      <a herf="#" class="shopcar_icon"></a>
+      <span class="shopcar_zero">0</span>
+      <a herf="#" class="shopcar_content">我的购物车</a>
+    </div>
+    <div class="hotword">
+      <a href="#">199减100</a>
+      <a href="#">鼠标试用</a>
+      <a href="#">农资7折</a>
+      <a href="#">低至29元</a>
+      <a href="#">抽奖赢空调</a>
+      <a href="#">记忆棉</a>
+      <a href="#">坐垫</a>
+      <a href="#">1分钱买油</a>
+      <a href="#">智能手表 </a>
+    </div>
+    <div class="super">
+      <a href="#">
+        <img src="./img/super.png" alt="">
+      </a>
+    </div>
+    <div class="item">
+      <ul>
+        <li><a href="#">秒杀</a></li>
+        <li><a href="#">优惠券</a></li>
+        <li><a href="#">闪购</a></li>
+        <li><a href="#">拍卖</a></li>
+        <li class="space"></li>
+        <li><a href="#">服装城</a></li>
+        <li><a href="#">京东超市</a></li>
+        <li><a href="#">生鲜</a></li>
+        <li><a href="#">全球购</a></li>
+        <li class="space"></li>
+        <li><a href="#">京东金融</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <main class="w grid">
+    <!-- 如果块级元素不加浮动的话，会独占一行显示 -->
+    <div class="grid-col1 fl">
+      <!-- 先用div定位，再在里面嵌套元素 -->
+      <div class="ad">
+        <div class="ad-l">
+          <img src="./img/ad-l.png" alt="">
+        </div>
+        <div class="ad-r">
+          <img src="./img/ad-r.jpg" alt="">
+        </div>
+      </div>
+      <ul>
+        <li><a href="#">家用电器</a></li>
+        <li>
+          <a href="#">手机</a>/
+          <a href="#">运用商</a>/
+          <a href="#">数码</a>/
+        </li>
+        <li>
+          <a href="#">手机</a>/
+          <a href="#">运用商</a>/
+          <a href="#">数码</a>/
+        </li>
+        <li>
+          <a href="#">手机</a>/
+          <a href="#">运用商</a>/
+          <a href="#">数码</a>/
+        </li>
+        <li>
+          <a href="#">手机</a>/
+          <a href="#">运用商</a>/
+          <a href="#">数码</a>/
+        </li>
+        <li>
+          <a href="#">手机</a>/
+          <a href="#">运用商</a>/
+          <a href="#">数码</a>/
+        </li>
+        <li>
+          <a href="#">手机</a>/
+          <a href="#">运用商</a>/
+          <a href="#">数码</a>/
+        </li>
+        <li>
+          <a href="#">手机</a>/
+          <a href="#">运用商</a>/
+          <a href="#">数码</a>/
+        </li>
+        <li>
+          <a href="#">手机</a>/
+          <a href="#">运用商</a>/
+          <a href="#">数码</a>/
+        </li>
+        <li>
+          <a href="#">手机</a>/
+          <a href="#">运用商</a>/
+          <a href="#">数码</a>/
+        </li>
+        <li>
+          <a href="#">手机</a>/
+          <a href="#">运用商</a>/
+          <a href="#">数码</a>/
+        </li>
+        <li>
+          <a href="#">手机</a>/
+          <a href="#">运用商</a>/
+          <a href="#">数码</a>/
+        </li>
+        <li>
+          <a href="#">手机</a>/
+          <a href="#">运用商</a>/
+          <a href="#">数码</a>/
+        </li>
+        <li>
+          <a href="#">手机</a>/
+          <a href="#">运用商</a>/
+          <a href="#">数码</a>/
+        </li>
+        <li>
+          <a href="#">手机</a>/
+          <a href="#">运用商</a>/
+          <a href="#">数码</a>/
+        </li>
+        <li>
+          <a href="#">手机</a>/
+          <a href="#">运用商</a>/
+          <a href="#">数码</a>/
+        </li>
+      </ul>
+    </div>
+    <div class="grid-col2 fl">
+      <div class="banner">
+        <a href="#"><img src="./img/banner.jpg" alt=""></a>
+        <a herf="#" class="btn_left"><</a>
+        <a href="#" class="btn_right">></a>
+        <a href="#" class="bar">
+          <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </a>
+      </div>
+      <img src="./img/l.jpg" alt="" class="fl">
+      <img src="./img/r.jpg" alt="" class="fr">
+    </div>
+    <div class="grid-col3 fr">
+      <div class="login">
+        <div class="login-up">
+          <a href="#" class="round-img">
+            <img src="./img/no_login.jpg" alt="">
+          </a>
+          <div class="login-up-text">
+            <div class="info">Hi, 欢迎来到京东！</div>
+            <a href="#">登录</a>
+            <a href="#">注册</a>
+          </div>
+        </div>
+        <div class="login-down">
+          <a href="#">新人福利</a>
+          <a href="#">PLUS会员</a>
+        </div>
+      </div>
+      <div class="borad">
+        <div class="borad-up">
+          <a href="#" class="fl">促销</a>
+          <div class="space fl"></div>
+          <a href="#" class="fl">公告</a>
+          <a href="#" class="fr">更多</a>
+        </div>
+        <div class="borad-down">
+          <ul>
+            <li>挑战3天不洗头</li>
+            <li>挑战3天不洗头</li>
+            <li>益生菌领券满399减100</li>
+            <li>益生菌领券满399减100</li>
+          </ul>
+        </div>
+      </div>
+      <div class="expand">
+        <!-- 如果与数据无关，尽量不要使用表格 -->
+        <ul>
+          <li>
+            <i></i>
+            <p>话费</p>
+          </li>
+          <li>
+            <i></i>
+            <p>话费</p>
+          </li>
+          <li>
+            <i></i>
+            <p>话费</p>
+          </li>
+          <li>
+            <i></i>
+            <p>话费</p>
+          </li>
+          <li>
+            <i></i>
+            <p>话费</p>
+          </li>
+          <li>
+            <i></i>
+            <p>话费</p>
+          </li>
+          <li>
+            <i></i>
+            <p>话费</p>
+          </li>
+          <li>
+            <i></i>
+            <p>话费</p>
+          </li>
+          <li>
+            <i></i>
+            <p>话费</p>
+          </li>
+          <li>
+            <i></i>
+            <p>话费</p>
+          </li>
+          <li>
+            <i></i>
+            <p>话费</p>
+          </li>
+          <li>
+            <i></i>
+            <p>话费</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <!-- 尾部 -->
+  <footer>
+    <div class="underline">
+      <div class="w">
+        <!-- 利用h系列的标签，提高相应容器的权重 -->
+        <!-- 并列的元素可以使用ol进行wrapper -->
+        <ul>
+          <li>
+            <h5>多</h5>
+            <p>品类齐全，轻松购物</p>
+          </li>
+          <li>
+            <h5>快</h5>
+            <p>品类齐全，轻松购物</p>
+          </li>
+          <li>
+            <h5>好</h5>
+            <p>品类齐全，轻松购物</p>
+          </li>
+          <li>
+            <h5>省</h5>
+            <p>品类齐全，轻松购物</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="end_middle w">
+      <div class="fl">
+        <dl>
+          <dt><a href="#">购物指南</a></dt>
+          <dd><a href="#">购物流程</a></dd>
+          <dd><a href="#">会员介绍</a></dd>
+          <dd><a href="#">生活旅行</a></dd>
+          <dd><a href="#">常见问题</a></dd>
+          <dd><a href="#">大家电</a></dd>
+          <dd><a href="#">联系客服</a></dd>
+        </dl>
+        <dl>
+          <dt><a href="#">购物指南</a></dt>
+          <dd><a href="#">购物流程</a></dd>
+          <dd><a href="#">会员介绍</a></dd>
+          <dd><a href="#">生活旅行</a></dd>
+          <dd><a href="#">常见问题</a></dd>
+          <dd><a href="#">大家电</a></dd>
+          <dd><a href="#">联系客服</a></dd>
+        </dl>
+        <dl>
+          <dt><a href="#">购物指南</a></dt>
+          <dd><a href="#">购物流程</a></dd>
+          <dd><a href="#">会员介绍</a></dd>
+          <dd><a href="#">生活旅行</a></dd>
+          <dd><a href="#">常见问题</a></dd>
+          <dd><a href="#">大家电</a></dd>
+          <dd><a href="#">联系客服</a></dd>
+        </dl>
+        <dl>
+          <dt><a href="#">购物指南</a></dt>
+          <dd><a href="#">购物流程</a></dd>
+          <dd><a href="#">会员介绍</a></dd>
+          <dd><a href="#">生活旅行</a></dd>
+          <dd><a href="#">常见问题</a></dd>
+          <dd><a href="#">大家电</a></dd>
+          <dd><a href="#">联系客服</a></dd>
+        </dl>
+      </div>
+      <div class="fr">
+        <div class="coverage">
+          <h5>京东自营覆盖区县</h5>
+          <p>京东已向全国2661个区县提供自营配送服务，支持货到付款、POS机刷卡和售后上门服务。</p>
+          <a href="#">查看详情 ></a>
+        </div>
+      </div>
+    </div>
+    <div class="about_us w">
+      <!-- 如果是简单的水平的文字，那么直接用p就行了 -->
+      <p class="w">
+        <a href="#">关于我们</a>
+        <span>|</span>
+        <a href="#">关于我们</a>
+        <span>|</span>
+        <a href="#">关于我们</a>
+        <span>|</span>
+        <a href="#">关于我们</a>
+        <span>|</span>
+        <a href="#">关于我们</a>
+        <span>|</span>
+        <a href="#">关于我们</a>
+        <span>|</span>
+        <a href="#">关于我们</a>
+        <span>|</span>
+        <a href="#">关于我们</a>
+        <span>|</span>
+        <a href="#">关于我们</a>
+        <span>|</span>
+        <a href="#">关于我们</a>
+        <span>|</span>
+        <a href="#">关于我们</a>
+        <span>|</span>
+        <a href="#">关于我们</a>
+        <span>|</span>
+        <a href="#">关于我们</a>
+        <span>|</span>
+        <a href="#">关于我们</a>
+        <span>|</span>
+      </p>
+    </div>
+    <div class="license w">
+      <p>
+        <!-- 这里可以直接用p嵌套，然后里面不包含任何p，只有span -->
+        京公网安备 11000002000088号
+        <span>|</span>
+        京ICP证070359号
+        <span>|</span>
+        互联网药品信息服务资格证编号(京)-经营性-2014-0008
+        <span>|</span>
+        出发京零 字第大120007号
+      </p>
+      <p>
+        互联网出版许可证编号新出网证(京)字150号
+        <span>|</span>
+        出版物经营许可证
+        <span>|</span>
+        网络文化经营许可证京网文[2014]2148-348号
+        <span>|</span>
+        违法和不良信息举报电话：4006561155
+      </p>
+      <p>
+        Copyright © 2004 - 2017 京东JD.com 版权所有|消费者维权热线：4006067733经营证照 京东旗下网站：京东支付|京东云
+      </p>
+    </div>
+    <div class="footer_icon">
+      <a href="#"></a>
+      <a href="#"></a>
+      <a href="#"></a>
+      <a href="#"></a>
+      <a href="#"></a>
+      <a href="#"></a>
+    </div>
+  </footer>
+</body>
+</html>
