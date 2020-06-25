@@ -1,0 +1,13 @@
+<ng-container>
+  <a class="cover">
+    <img [src]="songSheet.picUrl" [alt]="songSheet.name">
+    <div class="bottom">
+      <div class="num">
+        <i class="icon erji"></i>
+        <span>{{songSheet.playCount | playCount}}</span>
+        <i class="icon play"></i>
+      </div>
+    </div>
+  </a>
+  <span class="dec">{{songSheet.name}}</span>
+</ng-container>
