@@ -3,6 +3,7 @@ import { Banner,SongSheet, HotTag, Singer } from 'src/app/services/data-types/co
 import { NzCarouselComponent } from 'ng-zorro-antd';
 import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs/internal/operators';
+import { SongSheetService } from 'src/app/services/song-sheet.service';
 
 @Component({
   selector: 'app-home',
@@ -19,7 +20,8 @@ export class HomeComponent implements OnInit {
   singers: Singer[];
 
   constructor(
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private songSheetService: SongSheetService
   ) {
     this.route.data.pipe(map(res => res.homeDatas)).subscribe(([banners, hotTags, songSheet, singers]) => {
       this.banners = banners;
@@ -38,6 +40,12 @@ export class HomeComponent implements OnInit {
 
   onSlideChange(changeType: "pre" | "next") {
     this.carousel[changeType]();
+  }
+
+  onPlay(id: number) {
+    this.songSheetService.playSheet(id).subscribe(result => {
+      console.log(result);
+    })
   }
 
 }
