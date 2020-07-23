@@ -19,6 +19,7 @@ export function getElementOffset(el: HTMLElement): { top: number; left: number; 
   const win = el.ownerDocument.defaultView;
 
   return {
+    // pageYOffset和pageXOffset是窗口的水平和垂直方向的滚动
     top: rect.top + win.pageYOffset,
     left: rect.left + win.pageXOffset
   }

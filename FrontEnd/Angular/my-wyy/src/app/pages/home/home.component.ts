@@ -4,6 +4,9 @@ import { NzCarouselComponent } from 'ng-zorro-antd';
 import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs/internal/operators';
 import { SongSheetService } from 'src/app/services/song-sheet.service';
+import { Store } from '@ngrx/store';
+import { AppStoreModule } from 'src/app/store';
+import { SetSongList, SetPlayList, SetCurrentIndex } from 'src/app/store/actions/player.actions';
 
 @Component({
   selector: 'app-home',
@@ -21,7 +24,8 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private songSheetService: SongSheetService
+    private songSheetService: SongSheetService,
+    private store$: Store<AppStoreModule>
   ) {
     this.route.data.pipe(map(res => res.homeDatas)).subscribe(([banners, hotTags, songSheet, singers]) => {
       this.banners = banners;
@@ -44,8 +48,9 @@ export class HomeComponent implements OnInit {
 
   onPlay(id: number) {
     this.songSheetService.playSheet(id).subscribe(result => {
-      console.log(result);
+      this.store$.dispatch(SetSongList({ songList: result}));
+      this.store$.dispatch(SetPlayList({ playList: result}));
+      this.store$.dispatch(SetCurrentIndex({ currentIndex: 0 }));
     })
   }
-
 }

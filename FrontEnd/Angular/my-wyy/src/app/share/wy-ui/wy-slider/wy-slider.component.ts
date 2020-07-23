@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation, ViewChild, ElementRef, ChangeDetectionStrategy, Input, Inject, ChangeDetectorRef, OnDestroy, forwardRef } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, ViewChild, ElementRef, ChangeDetectionStrategy, Input, Inject, ChangeDetectorRef, OnDestroy, forwardRef, Output, EventEmitter } from '@angular/core';
 import { SliderEventObserverConfig, SliderValue } from './wy-slider.types';
 import { fromEvent, merge, Observable, Subscription } from 'rxjs';
 import { DOCUMENT } from '@angular/common';
@@ -28,6 +28,7 @@ export class WySliderComponent implements OnInit, OnDestroy, ControlValueAccesso
   @Input() wyMax = 100;
   @Input() bufferOffset: SliderValue = 0;
 
+  @Output() wyOnAfterChange = new EventEmitter<SliderValue>();
   // DOM
   @ViewChild("wySlider", {static: true}) private wySilder: ElementRef;
   private sliderDOM: HTMLDivElement;
@@ -99,6 +100,7 @@ export class WySliderComponent implements OnInit, OnDestroy, ControlValueAccesso
       pluckKey: ['touches', '0', orientField]
     };
 
+    // 给mouse和touch两个对象绑定三种事件的subscribe
     [mouse, touch].forEach(source => {
       const {start, move, end, filterFunc, pluckKey} = source;
 
@@ -156,7 +158,6 @@ export class WySliderComponent implements OnInit, OnDestroy, ControlValueAccesso
   private onDragStart(value: number) {
     this.toggleDragMoving(true);
     this.setValue(value);
-
   }
   private onDragMove(value: number) {
     if (this.isDragging) {
@@ -165,6 +166,7 @@ export class WySliderComponent implements OnInit, OnDestroy, ControlValueAccesso
     }
   }
   private onDragEnd() {
+    this.wyOnAfterChange.emit(this.value);
     this.toggleDragMoving(false);
     this.cdr.markForCheck();
   }
