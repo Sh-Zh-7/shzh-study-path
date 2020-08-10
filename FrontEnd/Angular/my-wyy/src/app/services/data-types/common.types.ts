@@ -38,3 +38,15 @@ export interface SongSheet {
   picUrl: string;
   tracks: Song[];
 }
+
+export interface SheetParams {
+  order: 'new' | 'hot';
+  cat: string;
+  limit: number;
+  offset: number;
+}
+
+export interface SheetList {
+  playLists: SongSheet[];
+  total: number;
+}
