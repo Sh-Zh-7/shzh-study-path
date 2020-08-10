@@ -34,7 +34,8 @@
             ],
             "styles": [
               "./node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
-              "src/styles.less"
+              "src/styles.less",
+              "src/assets/less/index.less"
             ],
             "scripts": []
           },
