@@ -25,9 +25,15 @@
             "aot": true,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",
+                "output": "/assets/"
+              }
             ],
             "styles": [
+              "./node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
               "src/styles.less"
             ],
             "scripts": []
@@ -92,6 +98,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
               "src/styles.less"
             ],
             "scripts": []
@@ -123,6 +130,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "today-ng"
+    }
+  },
+  "defaultProject": "today-ng",
+  "cli": {
+    "analytics": "8db21fb6-2a32-42bf-8179-413adbe5f47b"
+  }
 }
