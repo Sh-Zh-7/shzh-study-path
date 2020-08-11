@@ -5,7 +5,7 @@
       <h1 class="title-text">Today</h1>
     </div>
     <input nz-input  placeholder="请输入你喜欢的用户名" #usernameInput [(ngModel)]="username">
-    <button nz-button nzType="primary" [disabled]="!usernameInput.value">开始</button>
+    <button nz-button nzType="primary" (click)="onClick()" [disabled]="!usernameInput.value">开始</button>
     <div class="copy-right">
       <p>Copyright © 2020 Zhihao Shen</p>
     </div>
