@@ -1,8 +1,13 @@
 <div class="m-player"
+  [@showHide]="showPlayer"
   (click)="selfClick = true"
+  (mouseenter)="setPlayer('show')"
+  (mouseleave)="setPlayer('hide')"
+  (@showHide.start)="isAnimation = true"
+  (@showHide.done)="isAnimation = false"
 >
-  <div class="lock">
-    <div class="left"><i></i></div>
+  <div class="lock" (click)="isLocked = !isLocked">
+    <div class="left"><i [class.locked]="isLocked"></i></div>
   </div>
   <div class="hand"></div>
   <div class="container">

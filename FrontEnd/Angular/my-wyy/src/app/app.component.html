@@ -12,9 +12,7 @@
 
         <div class="right">
           <div class="search">
-            <nz-input-group nzSuffixIcon="search">
-              <input type="text" nz-input placeholder="歌单/歌手/歌曲" />
-            </nz-input-group>
+            <app-wy-search (onSearch)="onSearch($event)" [searchResult]="searchResult"></app-wy-search>
           </div>
           <div class="member">
             <div class="no-login">

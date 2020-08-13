@@ -71,3 +71,9 @@ export type SingerDetail = {
   artist: Singer;
   hotSongs: Song[];
 }
+
+export interface SearchResult {
+  albums?: SongSheet[];
+  artists?: Singer[];
+  songs?: Song[];
+}

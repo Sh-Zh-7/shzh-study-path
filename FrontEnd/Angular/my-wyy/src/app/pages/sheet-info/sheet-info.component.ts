@@ -22,9 +22,11 @@ export class SheetInfoComponent implements OnInit {
   }
 
   constructor(private route: ActivatedRoute) {
-    this.route.data.pipe(map(res => res.sheetInfo)).subscribe(sheet => {
+    this.route.data.pipe(map(res => res.sheetInfo)).subscribe((sheet: SongSheet) => {
       this.sheetInfo = sheet;
-      this.getDescription(sheet.description);
+      if (sheet.description) {
+        this.getDescription(sheet.description);
+      }
     });
   }
 

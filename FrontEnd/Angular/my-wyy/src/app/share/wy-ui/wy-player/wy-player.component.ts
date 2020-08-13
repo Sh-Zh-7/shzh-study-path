@@ -1,17 +1,24 @@
 import { Component, OnInit, ViewChild, ElementRef, Inject } from '@angular/core';
 import { AppStoreModule } from 'src/app/store';
 import { Store, select } from '@ngrx/store';
-import { getPlayer, getSongList, getPlayList, getCurrentIndex, getPlayMode, getPlaying, getCurrentSong } from 'src/app/store/selectors/player.selectors';
+import { getPlayer, getSongList, getPlayList, getCurrentIndex, getPlayMode, getCurrentSong } from 'src/app/store/selectors/player.selectors';
 import { Song } from 'src/app/services/data-types/common.types';
 import { PlayMode } from './wy-player.type';
 import { SetCurrentIndex } from 'src/app/store/actions/player.actions';
 import { DOCUMENT } from '@angular/common';
 import { Subscription, fromEvent } from 'rxjs';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-wy-player',
   templateUrl: './wy-player.component.html',
-  styleUrls: ['./wy-player.component.less']
+  styleUrls: ['./wy-player.component.less'],
+  animations: [trigger('showHide', [
+    state('show', style({bottom: 0})),
+    state('hide', style({bottom: -71})),
+    transition('show=>hide', [animate('0.3s')]),
+    transition('hide=>show', [animate('0.1s')])
+  ])]
 })
 export class WyPlayerComponent implements OnInit {
   playing: boolean;
@@ -20,6 +27,10 @@ export class WyPlayerComponent implements OnInit {
   playList: Song[];
   currentIndex: number;
   currentSong: Song;
+
+  showPlayer: string;
+  isAnimation: boolean;
+  isLocked: boolean;
 
   // 这里一定要加static: true， 不然在ngOnInit上根本就检测不出来
   @ViewChild('audio', {static: true}) private audio: ElementRef;
@@ -189,6 +200,12 @@ export class WyPlayerComponent implements OnInit {
       return this.currentSong.dt / 1000;
     } else {
       return 0;
+    }
+  }
+
+  setPlayer(state: string) {
+    if (!this.isAnimation && !this.isLocked) {
+      this.showPlayer = state;
     }
   }
 
