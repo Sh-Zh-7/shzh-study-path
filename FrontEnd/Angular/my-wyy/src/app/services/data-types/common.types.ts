@@ -13,6 +13,7 @@ export interface HotTag {
 export interface Singer {
   id: number;
   name: string;
+  alias: string[];
   picUrl: string;
   albumSize: number;
 }
@@ -33,9 +34,19 @@ export interface SongUrl {
 
 export interface SongSheet {
   id: number;
+  userId: number;
   name: string;
-  playCount: number;
   picUrl: string;
+  coverImgUrl: string;
+  playCount: number;
+  tags: string[];
+  createTime: number;
+  creator: { nickname: string; avatarUrl: string; };
+  description: string;
+  subscribedCount: number;
+  shareCount: number;
+  commentCount: number;
+  subscribed: boolean;
   tracks: Song[];
 }
 
@@ -47,6 +58,16 @@ export interface SheetParams {
 }
 
 export interface SheetList {
-  playLists: SongSheet[];
+  playlists: SongSheet[];
   total: number;
+}
+
+export interface Lyric {
+  lyric: string;
+  tlyric: string;
+}
+
+export type SingerDetail = {
+  artist: Singer;
+  hotSongs: Song[];
 }

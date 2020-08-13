@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'my-wyy';
+
+  menu = [{
+    label: '发现',
+    path: '/home'
+  }, {
+    label: '菜单',
+    path: '/sheet'
+  }]
 }

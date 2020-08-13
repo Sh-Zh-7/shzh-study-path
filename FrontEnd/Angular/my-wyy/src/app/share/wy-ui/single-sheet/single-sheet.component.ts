@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { SongSheet } from 'src/app/services/data-types/common.types';
+import { ActivatedRoute } from '@angular/router';
+import { map } from 'rxjs/internal/operators';
 
 @Component({
   selector: 'app-single-sheet',
@@ -10,13 +12,22 @@ export class SingleSheetComponent implements OnInit {
   @Input() songSheet: SongSheet;
   @Output() onPlayEmitter = new EventEmitter<number>();
 
-  constructor() { }
+  constructor(private route: ActivatedRoute) {
+    this.route.data.pipe(map(res => res.sheetInfo)).subscribe(data => {
+      console.log(data);
+    })
+  }
 
   ngOnInit(): void {
   }
 
-  onPlay(id: number) {
+  onPlay(evt: MouseEvent, id: number) {
+    evt.stopPropagation();
     this.onPlayEmitter.emit(id);
   }
 
+  get coverImg(): string {
+    return this.songSheet.picUrl || this.songSheet.coverImgUrl;
+  }
+  
 }

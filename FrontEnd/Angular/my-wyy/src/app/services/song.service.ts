@@ -3,7 +3,7 @@ import { ServicesModule, API_CONFIG } from './services.module';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/internal/operators';
-import { SongUrl, Song } from './data-types/common.types';
+import { SongUrl, Song, Lyric } from './data-types/common.types';
 
 @Injectable({
   providedIn: ServicesModule
@@ -21,6 +21,12 @@ export class SongService {
     .pipe(map((res: {data: SongUrl[]}) => res.data));
   }
 
+  getSongDetail(ids: string): Observable<Song> {
+    const params = new HttpParams().set("ids", ids);
+    return this.http.get(this.prefix + "song/detail", {params: params})
+    .pipe(map((res: {songs: Song[]}) => res.songs[0]));
+  }
+
   getSongList(songs: Song | Song[]): Observable<Song[]> {
     // isArray和slice方法（防止引用）
     const songArr = Array.isArray(songs)? songs.slice() : [songs];
@@ -31,6 +37,24 @@ export class SongService {
         observer.next(this.generateSongList(songArr, urls))
       })
     })
+  }
+
+  getLyrics(id: number): Observable<Lyric> {
+    const params = new HttpParams().set('id', id.toString());
+    return this.http.get(this.prefix + "lyric", {params: params})
+      .pipe(map((res: {[key: string]: {lyric: string}}) => {
+        try {
+          return {
+            lyric: res.lrc.lyric,
+            tlyric: res.tlyric.lyric
+          }
+        } catch(err) {
+          return {
+            lyric: '',
+            tlyric: ''
+          }
+        }
+      }))
   }
 
   generateSongList(songs: Song[], urls: SongUrl[]) {

@@ -21,12 +21,12 @@ export class WyPlayerPanelComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['songList']) {
-      console.log(this.songList);
-    }
-    if (changes['currentSong']) {
-      console.log(this.currentSong);
-    }
+    // if (changes['songList']) {
+    //   console.log(this.songList);
+    // }
+    // if (changes['currentSong']) {
+    //   console.log(this.currentSong);
+    // }
   }
 
 }

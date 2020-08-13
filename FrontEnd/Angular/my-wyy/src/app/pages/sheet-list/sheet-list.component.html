@@ -1,1 +1,31 @@
-<p>sheet-list works!</p>
+<div class="sheet wrap feature-wrap">
+  <div class="list-r">
+    <div class="top">
+      <div class="cat">
+        <span>{{listParams.cat}}</span>
+      </div>
+      <nz-radio-group [(ngModel)]="orderValue" (ngModelChange)="onChangeOrder($event)">
+        <label nz-radio-button [nzValue]="'hot'">热门</label>
+        <label nz-radio-button [nzValue]="'new'">最新</label>
+      </nz-radio-group>
+    </div>
+
+    <div class="list">
+      <app-single-sheet
+        class="sheet-item"
+        *ngFor="let item of sheet?.playlists"
+        [songSheet]="item"
+        (click)="onDisplaySingleSong(item.id)"
+      ></app-single-sheet>
+    </div>
+
+    <nz-pagination
+      class="pagination"
+      [nzPageIndex]="listParams.limit"
+      [nzPageIndex]="listParams.offset"
+      [nzTotal]="sheet?.total"
+      (nzPageIndexChange)="onPageIndexChange($event)"
+    >
+    </nz-pagination>
+  </div>
+</div>

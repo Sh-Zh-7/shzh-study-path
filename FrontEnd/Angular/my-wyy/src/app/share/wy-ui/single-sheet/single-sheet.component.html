@@ -1,12 +1,12 @@
 <ng-container>
   <a class="cover">
-    <img [src]="songSheet.picUrl" [alt]="songSheet.name">
+    <img [src]="coverImg" [alt]="songSheet.name">
     <div class="bottom">
       <div class="num">
         <i class="icon erji"></i>
         <span>{{songSheet.playCount | playCount}}</span>
-        <i class="icon play" (click)="onPlay(songSheet.id)"></i>
       </div>
+      <i class="icon play" (click)="onPlay($event, songSheet.id)"></i>
     </div>
   </a>
   <span class="dec">{{songSheet.name}}</span>

@@ -6,19 +6,15 @@
         <div class="left">
           <h1>Music</h1>
           <ul nz-menu nzTheme="dark" nzMode="horizontal">
-            <li nz-menu-item>发现</li>
-            <li nz-menu-item>菜单</li>
+            <li nz-menu-item *ngFor="let item of menu" [routerLink]="item.path">{{item.label}}</li>
           </ul>
         </div>
 
         <div class="right">
           <div class="search">
-            <nz-input-group [nzSuffix]="suffixIconSearch">
+            <nz-input-group nzSuffixIcon="search">
               <input type="text" nz-input placeholder="歌单/歌手/歌曲" />
             </nz-input-group>
-            <ng-template #suffixIconSearch>
-              <i nz-icon nzType="search"></i>
-            </ng-template>
           </div>
           <div class="member">
             <div class="no-login">

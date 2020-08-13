@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Banner,SongSheet, HotTag, Singer } from 'src/app/services/data-types/common.types';
 import { NzCarouselComponent } from 'ng-zorro-antd';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { map } from 'rxjs/internal/operators';
 import { SongSheetService } from 'src/app/services/song-sheet.service';
 import { Store } from '@ngrx/store';
@@ -24,6 +24,7 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private songSheetService: SongSheetService,
     private store$: Store<AppStoreModule>
   ) {
@@ -52,5 +53,9 @@ export class HomeComponent implements OnInit {
       this.store$.dispatch(SetPlayList({ playList: result}));
       this.store$.dispatch(SetCurrentIndex({ currentIndex: 0 }));
     })
+  }
+
+  onDisplaySingleSong(id: number) {
+    this.router.navigate(["/sheet-info", id]);
   }
 }
