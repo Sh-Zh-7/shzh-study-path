@@ -21,6 +21,7 @@
     "@angular/router": "~9.1.11",
     "@ngrx/store": "^9.2.0",
     "@ngrx/store-devtools": "^9.2.0",
+    "js-base64": "^3.4.5",
     "minireset.css": "0.0.6",
     "ng-zorro-antd": "^9.2.1",
     "rxjs": "~6.5.4",

@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { MemberBatchActionService } from 'src/app/store/member-batch-actions.service';
+import { User } from 'src/app/services/data-types/member.type';
+import { MemberService } from 'src/app/services/member.service';
 
 @Component({
   selector: 'app-member-card',
@@ -7,9 +10,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MemberCardComponent implements OnInit {
 
-  constructor() { }
+  @Input() user: User;
+  constructor(
+    private memberSerice: MemberService,
+    private memberBatchActionService: MemberBatchActionService
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  onClick() {
+    this.memberBatchActionService.controlModal();
+  }
+
+  onSignin() {
+    this.memberSerice.signIn().subscribe(
+      res => console.log(res),
+      error => console.log(error)
+    )
   }
 
 }

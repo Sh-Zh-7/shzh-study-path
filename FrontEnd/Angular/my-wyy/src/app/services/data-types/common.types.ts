@@ -1,3 +1,7 @@
+export interface AnyJson {
+  [key: string]: any;
+}
+
 export interface Banner {
   targetId: number;
   url: string;
