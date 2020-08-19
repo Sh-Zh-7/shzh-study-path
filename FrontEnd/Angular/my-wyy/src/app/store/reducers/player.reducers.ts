@@ -5,15 +5,15 @@ import { SetPlaying, SetPlayList, SetSongList, SetPlayMode, SetCurrentIndex } fr
 
 export interface PlayState {
   // 播放状态
-  playing: boolean,
+  playing: boolean;
   // 播放模式
-  playMode: PlayMode,
+  playMode: PlayMode;
   // 歌曲列表
-  playList: Song[],
+  playList: Song[];
   // 播放列表
-  songList: Song[],
+  songList: Song[];
   // 当前正在播放的索引
-  currentIndex: number,
+  currentIndex: number;
 }
 
 export const initialState: PlayState = {
@@ -22,7 +22,7 @@ export const initialState: PlayState = {
   playList: [],
   songList: [],
   currentIndex: -1,
-}
+};
 
 // 返回一个类啊
 // 使用的时候不用传递state参数，他会自动调用当前的state
@@ -34,7 +34,7 @@ const reducer = createReducer(
   on(SetSongList, (state, { songList }) => ({...state, songList})),
   on(SetPlayMode, (state, { playMode }) => ({...state, playMode})),
   on(SetCurrentIndex, (state, { currentIndex }) => ({...state, currentIndex}))
-)
+);
 
 export function playerReducer(state: PlayState, action: Action) {
   return reducer(state, action);

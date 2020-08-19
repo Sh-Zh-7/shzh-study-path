@@ -16,7 +16,7 @@ const defaultParam: QueryParam = {
   cat: 1001,
   limit: 9,
   offset: 0
-}
+};
 
 @Injectable({
   providedIn: ServicesModule
@@ -24,12 +24,12 @@ const defaultParam: QueryParam = {
 export class SingerService {
   constructor(
     private http: HttpClient,
-    @Inject(API_CONFIG) private prefix: string,  
+    @Inject(API_CONFIG) private prefix: string,
   ) {}
 
-  getSingerList(queryParam: QueryParam = defaultParam) :Observable<Singer[]> {
-    let param = new HttpParams({fromString: queryString.stringify(queryParam)})
-    return this.http.get(this.prefix + "artist/list", {params: param})
+  getSingerList(queryParam: QueryParam = defaultParam): Observable<Singer[]> {
+    const param = new HttpParams({fromString: queryString.stringify(queryParam)});
+    return this.http.get(this.prefix + 'artist/list', {params: param})
     .pipe(map((res: { artists: Singer[] }) => res.artists));
   }
 

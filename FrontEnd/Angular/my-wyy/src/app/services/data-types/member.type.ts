@@ -1,7 +1,9 @@
+import { SongSheet, Song } from './common.types';
+
 export interface SignIn {
   point?: number;
   msg?: string;
-  code: number; 
+  code: number;
 }
 
 export type User = {
@@ -30,4 +32,21 @@ export type User = {
     // 动态
     eventCount: number;
   };
+};
+
+export type recordVal = {
+  playCount: number;
+  score: number;
+  song: Song;
+};
+
+type recordKeys = 'weekData' | 'allData';
+
+export type UserRecord = {
+  [key in recordKeys]: recordVal[];
+};
+
+export type UserSheet = {
+  self: SongSheet[],
+  subscribed: SongSheet[]
 };

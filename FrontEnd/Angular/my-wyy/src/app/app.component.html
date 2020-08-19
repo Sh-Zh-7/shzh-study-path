@@ -1,4 +1,5 @@
 <div id="app">
+  <nz-progress *ngIf="loadPercent < 100" nzStrokeWidth="5" [nzShowInfo]="false" nzStatus="active" [nzPercent]="loadPercent"></nz-progress>
   <nz-layout class="layout">
     <nz-header class="header">
       <div class="wrap">
@@ -52,7 +53,7 @@
                     <i nz-icon type="down" nzTheme="outline"></i>
                   </div>
                   <ul>
-                    <li nz-menu-item>
+                    <li nz-menu-item [routerLink]="['/center', user.profile.userId]">
                       <i nz-icon nzType="user" nzTheme="outline"></i>我的主页
                     </li>
                     <li nz-menu-item (click)="onLogout()">
@@ -76,11 +77,22 @@
       Ant Design @2019 Implement By Angular
     </nz-footer>
   </nz-layout>
+</div>
   
   <app-wy-player></app-wy-player>
+
   <app-wy-layer-modal>
-    <app-wy-layer-login name="login" [wyRememberLogin]="wyRememberLogin" (onChangeModalType)="onChangeModalType($event)" (onLogin)="onLogin($event)"></app-wy-layer-login>
-    <app-wy-layer-register name="register"></app-wy-layer-register>
+    <app-wy-layer-like name="like" [mySheets]="mySongSheet"></app-wy-layer-like>
+    <app-wy-layer-share name="share"></app-wy-layer-share>
     <app-wy-layer-default (onChangeModalType)="onChangeModalType($event)"></app-wy-layer-default>
   </app-wy-layer-modal>
-</div>
+
+  <nz-back-top [nzTemplate]="tpl">
+    <ng-template #tpl>
+      <div class="ant-back-top-inner">
+        <button nz-button nzType="primary" nzSize="large">
+          <i nz-icon nzType="to-top" nzTheme="outline"></i>
+        </button>
+      </div>
+    </ng-template>
+  </nz-back-top>

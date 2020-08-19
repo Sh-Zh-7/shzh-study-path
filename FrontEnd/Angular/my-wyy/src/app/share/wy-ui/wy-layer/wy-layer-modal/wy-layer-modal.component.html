@@ -4,7 +4,7 @@
   cdkDrag
   cdkDragBoundary=".cdk-overlay-container">
   <div class="zbar" cdkDragHandlea>
-    <div class="zttl f-thide">这是标题</div>
+    <div class="zttl f-thide">{{title[modalType]}}</div>
   </div>
   <ng-container [ngSwitch]="modalType">
     <ng-container *ngSwitchCase="'LoginByPhone'">
@@ -12,6 +12,12 @@
     </ng-container>
     <ng-container *ngSwitchCase="'Register'">
       <ng-content select="[name=register]"></ng-content>
+    </ng-container>
+    <ng-container *ngSwitchCase="'Like'">
+      <ng-content select="[name=like]"></ng-content>
+    </ng-container>
+    <ng-container *ngSwitchCase="'Share'">
+      <ng-content select="[name=share]"></ng-content>
     </ng-container>
     <ng-container *ngSwitchDefault>
       <ng-content></ng-content>

@@ -6,7 +6,7 @@ export type LoginParams = {
   phone: string;
   password: string;
   remember: boolean;
-}
+};
 
 @Component({
   selector: 'app-wy-layer-login',
@@ -24,12 +24,12 @@ export class WyLayerLoginComponent implements OnInit, OnChanges {
     this.setFormModal({phone: '', password: '', remember: false});
   }
   ngOnChanges(changes: SimpleChanges): void {
-    if (this.wyRememberLogin && changes['wyRememberLogin']) {
+    if (this.wyRememberLogin && changes.wyRememberLogin) {
       const value = codeJson(this.wyRememberLogin, 'decode');
       const phone = value.phone;
       const password = value.phone;
       const remember = value.remember;
-      this.setFormModal({phone: phone, password: password, remember: remember});
+      this.setFormModal({phone, password, remember});
     }
   }
 
@@ -38,11 +38,11 @@ export class WyLayerLoginComponent implements OnInit, OnChanges {
       phone: [phone, [Validators.required, Validators.pattern(/^1\d{10}$/)]],
       password: [password, [Validators.required, Validators.minLength(6)]],
       remember: [remember]
-    })
+    });
   }
 
   ngOnInit(): void { }
-  
+
   onSubmit(): void {
     if (this.formModal.valid) {
       this.onLogin.emit(this.formModal.value);

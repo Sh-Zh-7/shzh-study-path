@@ -22,6 +22,11 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   }]
 })
 export class WySliderComponent implements OnInit, OnDestroy, ControlValueAccessor {
+
+  constructor(
+    @Inject(DOCUMENT) private doc: Document,
+    private cdr: ChangeDetectorRef,
+  ) { }
   // Input
   @Input() wyVertical = false;
   @Input() wyMin = 0;
@@ -30,7 +35,7 @@ export class WySliderComponent implements OnInit, OnDestroy, ControlValueAccesso
 
   @Output() wyOnAfterChange = new EventEmitter<SliderValue>();
   // DOM
-  @ViewChild("wySlider", {static: true}) private wySilder: ElementRef;
+  @ViewChild('wySlider', {static: true}) private wySilder: ElementRef;
   private sliderDOM: HTMLDivElement;
 
   // Observable and subscription
@@ -41,19 +46,14 @@ export class WySliderComponent implements OnInit, OnDestroy, ControlValueAccesso
   dragMove_: Subscription | null;
   dragEnd_: Subscription | null;
 
-  // ControlValueAccessor interface functions
-  private onValueChange(value: SliderValue): void {}
-  private onTouched(): void {}
-
   // Others
-  isDragging: boolean = false;
+  isDragging = false;
   value: SliderValue = null;
   offset: SliderValue = null;
 
-  constructor(
-    @Inject(DOCUMENT) private doc: Document,
-    private cdr: ChangeDetectorRef,  
-  ) { }
+  // ControlValueAccessor interface functions
+  private onValueChange(value: SliderValue): void {}
+  private onTouched(): void {}
 
   // fn这个函数是被传进来的
   // 要做的仅仅是把fn保存就行了
@@ -83,14 +83,14 @@ export class WySliderComponent implements OnInit, OnDestroy, ControlValueAccesso
   createDraggingObservables() {
     // 定义并绑定事件(绑定元素利用了DOMCUMENT这个TOKEN进行DI)
     // 利用fromEvent获得的Observable的主要目的，就是通过触发事件获得自己想要的数据
-    const orientField = this.wyVertical? 'pageY': 'pageX';
+    const orientField = this.wyVertical ? 'pageY' : 'pageX';
     // 绑定两套事件
     const mouse: SliderEventObserverConfig = {
       start: 'mousedown',
       move: 'mousemove',
       end: 'mouseup',
       filterFunc: (e: MouseEvent) => e instanceof MouseEvent,
-      pluckKey: [orientField] 
+      pluckKey: [orientField]
     };
     const touch: SliderEventObserverConfig = {
       start: 'touchstart',
@@ -122,7 +122,7 @@ export class WySliderComponent implements OnInit, OnDestroy, ControlValueAccesso
         map((position: number) => this.findClosestValue(position)),
         takeUntil(source.end$)
       );
-    })
+    });
     this.dragStart$ = merge(mouse.startPlucked$, touch.startPlucked$);
     this.dragMove$ = merge(mouse.moveResolved$, touch.moveResolved$);
     this.dragEnd$ = merge(mouse.end$, touch.end$);
@@ -182,7 +182,7 @@ export class WySliderComponent implements OnInit, OnDestroy, ControlValueAccesso
 
   // 这个函数主要是用来判断value是否合法
   private assertValueValid(value: SliderValue): boolean {
-    return isNaN(typeof value !== 'number'? parseFloat(value): value);
+    return isNaN(typeof value !== 'number' ? parseFloat(value) : value);
   }
 
   private valuesEqual(valA: SliderValue, valB: SliderValue) {

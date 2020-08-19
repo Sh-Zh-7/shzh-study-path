@@ -78,7 +78,7 @@ export class WyLyric {
       }
     });
 
-    const _skip= skipIndex === -1 ? 0 : skipIndex;
+    const _skip = skipIndex === -1 ? 0 : skipIndex;
     const skipItems = tempArr[0].slice(0, _skip);
     if (skipItems.length) {
       skipItems.forEach(line => this.makeLine(line));
@@ -113,7 +113,7 @@ export class WyLyric {
   }
 
   play(startTime = 0, skip = false) {
-    if (!this.lines.length) return;
+    if (!this.lines.length) { return; }
     if (!this.playing) {
       this.playing = true;
     }
@@ -123,7 +123,7 @@ export class WyLyric {
     if (!skip) {
       this.callHandler(this.curNum - 1);
     }
-    
+
     if (this.curNum < this.lines.length) {
       this.clearTimer();
       this.playReset();
@@ -132,7 +132,7 @@ export class WyLyric {
   }
 
   private playReset() {
-    let line = this.lines[this.curNum];
+    const line = this.lines[this.curNum];
     const delay = line.time - (Date.now() - this.startStamp);
     this.timer$ = timer(delay).subscribe(() => {
       this.callHandler(this.curNum++);

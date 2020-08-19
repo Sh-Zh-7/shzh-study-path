@@ -1,4 +1,4 @@
-import { PlayState } from "../reducers/player.reducers";
+import { PlayState } from '../reducers/player.reducers';
 import { createSelector, createFeatureSelector } from '@ngrx/store';
 
 // 这个文件主要是用来得到数据

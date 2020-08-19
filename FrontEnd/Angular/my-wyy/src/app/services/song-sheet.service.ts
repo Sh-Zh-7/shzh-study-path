@@ -20,13 +20,13 @@ export class SongSheetService {
   getSongSheet(id: number): Observable<SongSheet> {
     const arg = new HttpParams().set('id', id.toString());
     // 注意给http传递参数
-    return this.http.get(this.prefix + "playlist/detail", {params: arg})
+    return this.http.get(this.prefix + 'playlist/detail', {params: arg})
     .pipe(map((res: { playlist: SongSheet }) => res.playlist));
   }
 
   getPlayList(args: SheetParams): Observable<SheetList> {
     const targetArgs = new HttpParams({fromString: queryString.stringify(args)});
-    return this.http.get(this.prefix + "top/playlist", {params: targetArgs})
+    return this.http.get(this.prefix + 'top/playlist', {params: targetArgs})
     .pipe(map(res => res as SheetList));
   }
 

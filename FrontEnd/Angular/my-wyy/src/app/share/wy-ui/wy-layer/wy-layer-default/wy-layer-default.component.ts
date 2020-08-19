@@ -1,5 +1,4 @@
 import { Component, OnInit, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
-import { ModalType } from 'src/app/store/reducers/member.reducers';
 
 @Component({
   selector: 'app-wy-layer-default',

@@ -14,7 +14,7 @@ export class SearchService {
 
   search(keywords: string): Observable<SearchResult> {
     const params = new HttpParams().set('keywords', keywords);
-    return this.http.get(this.prefix + "search/suggest", {params: params})
-      .pipe(map((res: {result: SearchResult}) => res.result))
+    return this.http.get(this.prefix + 'search/suggest', {params})
+      .pipe(map((res: {result: SearchResult}) => res.result));
   }
 }

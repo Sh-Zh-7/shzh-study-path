@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, ElementRef, ChangeDetectorRef, Renderer2, ViewChild } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ElementRef, ChangeDetectorRef, Renderer2, ViewChild, Output, EventEmitter } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { AppStoreModule } from 'src/app/store';
 import { getModalType, getModalVisiable, getModal } from 'src/app/store/selectors/member.selectors';
@@ -14,7 +14,7 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
   templateUrl: './wy-layer-modal.component.html',
   styleUrls: ['./wy-layer-modal.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: [trigger("showHide", [
+  animations: [trigger('showHide', [
     state('show', style({ transform: 'scale(1)', opacity: 1 })),
     state('hide', style({ transform: 'scale(0)', opacity: 0})),
     transition('show<=>hide', animate('0.2s'))
@@ -23,10 +23,21 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 export class WyLayerModalComponent implements OnInit {
   showModal = 'hide';
   modalType: ModalType = ModalType.Default;
-  private visiable: boolean = false;
+  private visiable = false;
   private overlayRef: OverlayRef;
   private scrollStrategy: BlockScrollStrategy;
   private overlayContainerEl: HTMLElement;
+
+  // 在模板里利用字典+字符串
+  title = {
+    Register: '注册',
+    LoginByPhone: '登录',
+    like: '收藏',
+    share: '分享',
+    Default: ''
+  };
+
+  @Output() onLoadSongSheet = new EventEmitter<void>();
   @ViewChild('modalContainer', { static: false }) private modalRef: ElementRef;
   private resizeHandler: () => void;
 
@@ -38,11 +49,11 @@ export class WyLayerModalComponent implements OnInit {
     private overlayKeyboardDispatcher: OverlayKeyboardDispatcher,
     private batchActionService: MemberBatchActionService,
     private rd: Renderer2,
-    private overlayContainerServe: OverlayContainer
+    private overlayContainerServe: OverlayContainer,
   ) {
     const appStore$ = this.store$.pipe(select(getModal));
-    appStore$.pipe(select(getModalType)).subscribe(type => this.watchModalType(type))
-    appStore$.pipe(select(getModalVisiable)).subscribe(visiable => this.watchModalVisiable(visiable))
+    appStore$.pipe(select(getModalType)).subscribe(type => this.watchModalType(type));
+    appStore$.pipe(select(getModalVisiable)).subscribe(visiable => this.watchModalVisiable(visiable));
     this.scrollStrategy = this.overlay.scrollStrategies.block();
   }
 
@@ -99,6 +110,9 @@ export class WyLayerModalComponent implements OnInit {
   private watchModalType(type) {
     if (type !== this.modalType) {
       this.modalType = type;
+      if (type === ModalType.Like) {
+        this.onLoadSongSheet.emit();
+      }
       this.cdr.markForCheck();
     }
   }
@@ -110,7 +124,7 @@ export class WyLayerModalComponent implements OnInit {
       this.overlayKeyboardDispatcher.add(this.overlayRef);
       // 监听
       this.listenResizeToCenter();
-      this.changePointerEvents('auto')
+      this.changePointerEvents('auto');
     } else {
       this.showModal = 'hide';
       this.scrollStrategy.disable();

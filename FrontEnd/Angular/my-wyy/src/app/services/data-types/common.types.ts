@@ -74,7 +74,7 @@ export interface Lyric {
 export type SingerDetail = {
   artist: Singer;
   hotSongs: Song[];
-}
+};
 
 export interface SearchResult {
   albums?: SongSheet[];

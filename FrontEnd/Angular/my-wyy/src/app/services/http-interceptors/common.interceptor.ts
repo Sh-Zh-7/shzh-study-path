@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/internal/operators';
@@ -9,13 +9,13 @@ export class CommonInterceptor implements HttpInterceptor {
     // 允许跨域的cookie
     return next.handle(req.clone({
       withCredentials: true
-    })).pipe(catchError(this.handleError))
+    })).pipe(catchError(this.handleError));
   }
 
-  handleError(error: any):never {
+  handleError(error: any): never {
     // 处理错误信息
     throw error.error;
   }
-  
+
 
 }

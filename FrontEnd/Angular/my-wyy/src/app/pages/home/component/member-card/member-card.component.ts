@@ -27,7 +27,7 @@ export class MemberCardComponent implements OnInit {
     this.memberSerice.signIn().subscribe(
       res => console.log(res),
       error => console.log(error)
-    )
+    );
   }
 
 }

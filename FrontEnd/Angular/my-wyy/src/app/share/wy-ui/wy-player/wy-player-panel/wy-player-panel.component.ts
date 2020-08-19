@@ -7,7 +7,7 @@ import { Song } from 'src/app/services/data-types/common.types';
   styleUrls: ['./wy-player-panel.component.less']
 })
 export class WyPlayerPanelComponent implements OnInit, OnChanges {
-  @Input() show: boolean = false;
+  @Input() show = false;
   @Input() songList: Song[];
   @Input() currentSong: Song;
   @Input() currentIndex: number;

@@ -39,21 +39,21 @@ export class WyPlayerComponent implements OnInit {
   percent = 0;
   bufferOffset = 0;
 
-  volumn: number = 70;
-  currentTime: number = 0;
-  canPlay: boolean = false; // 能不能播放，比如一开始没有歌曲的时候就不能播放
+  volumn = 70;
+  currentTime = 0;
+  canPlay = false; // 能不能播放，比如一开始没有歌曲的时候就不能播放
 
   // 点击其它地方隐藏音量组件
-  showVolumnPanel: boolean = false;
-  selfClick: boolean = false;
+  showVolumnPanel = false;
+  selfClick = false;
   private winClick: Subscription;
 
-  showPanel: boolean = false;
+  showPanel = false;
 
   constructor(
     private store$: Store<AppStoreModule>,
     @Inject(DOCUMENT) private doc: Document
-  ) { 
+  ) {
     const appStore$ = this.store$.pipe(select(getPlayer));
     appStore$.pipe(select(getSongList)).subscribe(list => this.watchList(list, 'songList'));
     appStore$.pipe(select(getPlayList)).subscribe(list => this.watchList(list, 'playList'));
@@ -92,15 +92,15 @@ export class WyPlayerComponent implements OnInit {
 
   onPrev(index) {
     if (this.canPlay) {
-      const newIndex = index < 0? this.songList.length - 1: index;
+      const newIndex = index < 0 ? this.songList.length - 1 : index;
       this.updateIndex(newIndex);
     }
   }
 
   onNext(index) {
     if (this.canPlay) {
-      const newIndex = 
-        index >= this.songList.length?  0 : index;
+      const newIndex =
+        index >= this.songList.length ?  0 : index;
       this.updateIndex(newIndex);
     }
   }
@@ -127,7 +127,7 @@ export class WyPlayerComponent implements OnInit {
   }
 
   onPercentChange(per: number) {
-    this.audioEl.currentTime = this.totalTime * (per / 100)
+    this.audioEl.currentTime = this.totalTime * (per / 100);
   }
 
   onVolumnChange(per: number) {
@@ -153,7 +153,7 @@ export class WyPlayerComponent implements OnInit {
   }
 
   bindDocumentClickListner() {
-    this.winClick = fromEvent(this.doc, "click").subscribe(() => {
+    this.winClick = fromEvent(this.doc, 'click').subscribe(() => {
       // 其实播放组件也是包含在你DOM下面的
       if (!this.selfClick) {
         this.showPanel = false;
@@ -164,7 +164,7 @@ export class WyPlayerComponent implements OnInit {
       // 如果是点击播放组件的话，在这之前selfClick的值是true, 但是同样也会触发DOM的click，所以最终还是false
       // 同样，如果这里不设置false的话，第一次点击图标后就是true, 然后就永远进不去那个if了
       this.selfClick = false;
-    })
+    });
   }
 
   unbindDocumentClickListner() {
@@ -175,7 +175,7 @@ export class WyPlayerComponent implements OnInit {
   }
 
   onTimeUpdate(e: Event) {
-    this.currentTime= (e.target as HTMLAudioElement).currentTime;
+    this.currentTime = (e.target as HTMLAudioElement).currentTime;
     this.percent = this.currentTime / this.totalTime * 100;
     const buffer = this.audioEl.buffered;
     if (buffer.length && this.bufferOffset < 100) {
@@ -191,8 +191,8 @@ export class WyPlayerComponent implements OnInit {
 
   // 这个get accessor不用专门再次定义属性了
   get picUrl() {
-    return this.currentSong? this.currentSong.al.picUrl :
-     "//s4.music.126.net/style/web2/img/default/default_album.jpg";
+    return this.currentSong ? this.currentSong.al.picUrl :
+     '//s4.music.126.net/style/web2/img/default/default_album.jpg';
   }
 
   get totalTime() {

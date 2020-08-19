@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 import { AppStoreModule } from '.';
 import { Store, select } from '@ngrx/store';
 import { ModalState, ModalType } from './reducers/member.reducers';
@@ -18,6 +18,6 @@ export class MemberBatchActionService {
   // Batch action services里面就是各种dispatch，这样就不用向外部暴露dispatch了
   controlModal(visiable = true, modalType?: ModalType) {
     this.store$.dispatch(SetModalVisiable({ modalVisiable: visiable }));
-    this.store$.dispatch(SetModalType({ modalType: modalType }));
+    this.store$.dispatch(SetModalType({ modalType }));
   }
 }

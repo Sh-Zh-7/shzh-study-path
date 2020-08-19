@@ -15,7 +15,7 @@ export class SingleSheetComponent implements OnInit {
   constructor(private route: ActivatedRoute) {
     this.route.data.pipe(map(res => res.sheetInfo)).subscribe(data => {
       console.log(data);
-    })
+    });
   }
 
   ngOnInit(): void {
@@ -29,5 +29,5 @@ export class SingleSheetComponent implements OnInit {
   get coverImg(): string {
     return this.songSheet.picUrl || this.songSheet.coverImgUrl;
   }
-  
+
 }

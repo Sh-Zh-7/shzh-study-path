@@ -12,7 +12,7 @@ export function getElementOffset(el: HTMLElement): { top: number; left: number; 
     return {
       top: 0,
       left: 0
-    }
+    };
   }
 
   const rect = el.getBoundingClientRect();
@@ -22,5 +22,5 @@ export function getElementOffset(el: HTMLElement): { top: number; left: number; 
     // pageYOffset和pageXOffset是窗口的水平和垂直方向的滚动
     top: rect.top + win.pageYOffset,
     left: rect.left + win.pageXOffset
-  }
+  };
 }

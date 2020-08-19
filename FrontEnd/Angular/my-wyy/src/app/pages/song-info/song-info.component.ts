@@ -17,7 +17,7 @@ export class SongInfoComponent implements OnInit {
     isExpand: false,
     label: '展开',
     iconCls: 'up'
-  }
+  };
 
   constructor(
     private route: ActivatedRoute
@@ -25,7 +25,7 @@ export class SongInfoComponent implements OnInit {
     this.route.data.pipe(map(res => res.songInfo)).subscribe(([song, lyric]) => {
         this.song = song;
         this.lyric = new WyLyric(lyric).lines;
-    })
+    });
   }
 
   ngOnInit(): void {

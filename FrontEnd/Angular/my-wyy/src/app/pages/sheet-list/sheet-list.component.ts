@@ -14,10 +14,10 @@ export class SheetListComponent implements OnInit {
     cat: '全部',
     limit: 35,
     offset: 1
-  }
+  };
 
   sheet: SheetList;
-  listParams : SheetParams;
+  listParams: SheetParams;
   orderValue: 'hot' | 'new' = 'hot';
 
   constructor(

@@ -30,7 +30,7 @@ export class WySearchComponent implements OnInit, AfterViewInit, OnChanges {
   ngOnInit(): void { }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['searchResult'] && !changes['searchResult'].firstChange) {
+    if (changes.searchResult && !changes.searchResult.firstChange) {
       if (!IsEmptyObj(this.searchResult)) {
         this.showOverlayPanel();
       }
@@ -70,7 +70,7 @@ export class WySearchComponent implements OnInit, AfterViewInit, OnChanges {
 
     this.overlayRef = this.overlay.create({
       hasBackdrop: true,
-      positionStrategy: positionStrategy,
+      positionStrategy,
       scrollStrategy: this.overlay.scrollStrategies.reposition()
     });
     const panelPortal = new ComponentPortal(WySearchPanelComponent, this.viewContainerRef);

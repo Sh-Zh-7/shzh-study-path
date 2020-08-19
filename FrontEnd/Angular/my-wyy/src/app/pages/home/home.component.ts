@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Banner,SongSheet, HotTag, Singer } from 'src/app/services/data-types/common.types';
+import { Banner, SongSheet, HotTag, Singer } from 'src/app/services/data-types/common.types';
 import { NzCarouselComponent } from 'ng-zorro-antd';
 import { ActivatedRoute, Router } from '@angular/router';
 import { map } from 'rxjs/internal/operators';
@@ -17,8 +17,8 @@ import { User } from 'src/app/services/data-types/member.type';
   styleUrls: ['./home.component.less']
 })
 export class HomeComponent implements OnInit {
-  @ViewChild(NzCarouselComponent, {static: true}) private carousel: NzCarouselComponent; 
-  curIndex: number = 0;
+  @ViewChild(NzCarouselComponent, {static: true}) private carousel: NzCarouselComponent;
+  curIndex = 0;
 
   userId: string;
   user: User;
@@ -47,10 +47,10 @@ export class HomeComponent implements OnInit {
         this.userId = userId;
         this.memberService.getUserDetail(userId).subscribe(user => this.user = user);
       } else {
-        this.userId = "";
+        this.userId = '';
         this.user = null;
       }
-      
+
     });
    }
 
@@ -61,7 +61,7 @@ export class HomeComponent implements OnInit {
     this.curIndex = to;
   }
 
-  onSlideChange(changeType: "pre" | "next") {
+  onSlideChange(changeType: 'pre' | 'next') {
     this.carousel[changeType]();
   }
 
@@ -70,10 +70,10 @@ export class HomeComponent implements OnInit {
       this.store$.dispatch(SetSongList({ songList: result}));
       this.store$.dispatch(SetPlayList({ playList: result}));
       this.store$.dispatch(SetCurrentIndex({ currentIndex: 0 }));
-    })
+    });
   }
 
   onDisplaySingleSong(id: number) {
-    this.router.navigate(["/sheet-info", id]);
+    this.router.navigate(['/sheet-info', id]);
   }
 }
